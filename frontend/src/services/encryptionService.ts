@@ -100,13 +100,17 @@ export const encryptEmail = async (emailData: any) => {
 };
 
 // Decrypt email content
-export const decryptEmail = async (emailId: string) => {
+export const decryptEmail = async (emailId: string, encryptedContent: string, encryptedSharedSecret: string) => {
   try {
     const token = localStorage.getItem('authToken');
     
     const response = await axios.post(
       `${API_URL}/encryption/decrypt`,
-      { emailId },
+      { 
+        emailId,
+        encryptedContent,
+        encryptedSharedSecret 
+      },
       {
         headers: {
           Authorization: `Bearer ${token}`

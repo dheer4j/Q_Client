@@ -87,7 +87,7 @@ const QuantumEmailClient: React.FC = () => {
 
         <EmailList 
           emails={filteredEmails}
-          selectedEmailId={selectedEmail?.id}
+          selectedEmailId={selectedEmail?.id || null}
           onEmailSelect={handleEmailSelect}
           loading={loading}
           error={error}

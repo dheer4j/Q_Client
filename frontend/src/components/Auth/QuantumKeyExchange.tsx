@@ -1,3 +1,4 @@
+// @ts-ignore
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { generateQuantumKeyPair, completeKeyExchange } from '../../services/encryptionService';
@@ -17,7 +18,7 @@ const QuantumKeyExchange: React.FC = () => {
 
   // Simulate key generation progress
   useEffect(() => {
-    let interval: NodeJS.Timeout;
+    let interval: ReturnType<typeof setInterval>;
     
     if (isLoading && progress < 100) {
       interval = setInterval(() => {

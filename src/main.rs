@@ -10,7 +10,6 @@ use tracing::{error, info};
 use uuid::Uuid;
 
 use quantum_email_client::config::AppConfig;
-use quantum_email_client::quantum_encryption::key_exchange::QuantumKeyExchange;
 use quantum_email_client::utils::logging;
 use quantum_email_client::websocket::server::WebSocketServer;
 use quantum_email_client::AppState;
@@ -111,9 +110,6 @@ impl QuantumEmailApp {
     }
 
     pub async fn generate_key_pair(&self, user_id: Uuid) -> Result<()> {
-        let key_exchange = QuantumKeyExchange::new(&self.state.config.encryption);
-        let key_pair = key_exchange.generate_key_pair()?;
-
         // Skip database interaction unless explicitly needed and DB is running
         info!("Generated new quantum key pair for user {} (not stored due to DB unavailability)", user_id);
         // Uncomment and ensure DB is running when ready

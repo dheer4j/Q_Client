@@ -40,6 +40,8 @@ interface Email {
   timestamp: string;
   isEncrypted: boolean;
   content?: string;
+  encryptedContent?: string;
+  encryptedSharedSecret?: string;
   attachments?: Array<{
     id: string;
     name: string;
@@ -69,12 +71,12 @@ const EmailView: React.FC<EmailViewProps> = ({ email }) => {
   }, [email.id]);
 
   const handleDecrypt = async () => {
-    if (!email.isEncrypted) return;
+    if (!email.isEncrypted || !email.encryptedContent || !email.encryptedSharedSecret) return;
     
     setIsDecrypting(true);
     try {
       // In a real app, we would use the actual encrypted content
-      const content = await decryptEmail(email.id);
+      const content = await decryptEmail(email.id, email.encryptedContent, email.encryptedSharedSecret);
       setDecryptedContent(content);
     } catch (error) {
       console.error('Failed to decrypt email:', error);
