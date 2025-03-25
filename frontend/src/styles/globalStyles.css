@@ -1,0 +1,161 @@
+/* Global Styles for Quantum Email Client */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary-color: #10b981;
+  --secondary-dark: #059669;
+  --secondary-light: #34d399;
+  --background-dark: #111827;
+  --background-medium: #1f2937;
+  --background-light: #374151;
+  --text-light: #f3f4f6;
+  --text-medium: #d1d5db;
+  --text-dark: #9ca3af;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  background-color: var(--background-dark);
+  color: var(--text-light);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-medium);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--background-light);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dark);
+}
+
+/* Common component styles */
+.btn {
+  @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+}
+
+.btn-primary {
+  @apply bg-indigo-600 hover:bg-indigo-700 text-white;
+}
+
+.btn-secondary {
+  @apply bg-emerald-600 hover:bg-emerald-700 text-white;
+}
+
+.btn-danger {
+  @apply bg-red-600 hover:bg-red-700 text-white;
+}
+
+.btn-ghost {
+  @apply bg-transparent hover:bg-gray-700 text-gray-300;
+}
+
+/* Form elements */
+.form-input {
+  @apply bg-gray-800 border border-gray-700 rounded-md px-3 py-2 text-gray-200 
+         focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-gray-300 mb-1;
+}
+
+/* Card styles */
+.card {
+  @apply bg-gray-800 rounded-lg shadow-md overflow-hidden;
+}
+
+.card-header {
+  @apply px-4 py-3 bg-gray-700 border-b border-gray-600;
+}
+
+.card-body {
+  @apply p-4;
+}
+
+/* Animation utilities */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+/* Email list item styles */
+.email-item {
+  @apply p-3 border-b border-gray-700 cursor-pointer hover:bg-gray-700 transition-colors duration-150;
+}
+
+.email-item.selected {
+  @apply bg-indigo-900 hover:bg-indigo-800;
+}
+
+.email-item.unread {
+  @apply font-semibold;
+}
+
+/* Quantum encryption status indicators */
+.encryption-status {
+  @apply flex items-center text-sm rounded-full px-3 py-1;
+}
+
+.encryption-status.active {
+  @apply bg-green-900 text-green-200;
+}
+
+.encryption-status.pending {
+  @apply bg-yellow-900 text-yellow-200;
+}
+
+.encryption-status.inactive {
+  @apply bg-red-900 text-red-200;
+}
+
+/* Notification styles */
+.notification {
+  @apply p-3 rounded-md mb-2 shadow-lg;
+}
+
+.notification.info {
+  @apply bg-blue-800 text-blue-200;
+}
+
+.notification.success {
+  @apply bg-green-800 text-green-200;
+}
+
+.notification.warning {
+  @apply bg-yellow-800 text-yellow-200;
+}
+
+.notification.error {
+  @apply bg-red-800 text-red-200;
+}
