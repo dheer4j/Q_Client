@@ -1,4 +1,4 @@
-aimport React from 'react';
+import React from 'react';
 
 const SimpleApp: React.FC = () => {
   return (
